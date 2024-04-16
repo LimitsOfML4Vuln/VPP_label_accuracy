@@ -28,17 +28,15 @@ Below is an annotated map of the JSON structure of label_accuracy_analysis.json.
 └── vulnerable_func................ The function.
 ```
 
-## Labelling Process
+## Labelling Criteria and Process
 
-1. Randomly sample 100 functions from VulnPatchPairs that were labelled as 'vulnerable' by the Devign authors.
-2. For each of the functions, do the following:
-3. Open the corresponding patch commit on GitHub.
-4. Verify, that the function was actually modified in the patch commit. If no, assign the label 0 to the function.
-5. Read and try to understand the commit message. Does the message actually talk about fixing a vulnerability or a safety problem? If no, assign the label 0 to the function.
-6. Check, whether the function is actually changed to address the vulnerability/safety problem, or if it was changed for some other purpose. If it was changed for some other purpose, assign the label 0 to the function.
-7. Check whether the problem is actually a security vulnerability (this was sometimes a bit tricky). If no, assign the label 0 to the function. If yes, assign the label 1 to the function.
-8. If the label could not be determined after 10-15 minutes of effort, assign the label 2 to the function.
+We adopted our labeling criteria based on the [supplementary materials](https://sites.google.com/view/devign) provided by the Devign authors, categorizing all potential denial of service issues, such as "buffer overflow, memory leak, crash, and corruption," as vulnerabilities. This was our process:
 
-## Labelling Criteria
-
-We adopted our labeling criteria based on the [supplementary materials](https://sites.google.com/view/devign) provided by the Devign authors, categorizing all potential denial of service issues, such as "buffer overflow, memory leak, crash, and corruption", as vulnerabilities.
+1. We randomly sampled 100 functions from VulnPatchPairs that were labeled as 'vulnerable' by the Devign authors.
+2. For each function, we did the following:
+3. We opened the corresponding patch commit on GitHub.
+4. We verified that the function was actually modified in the patch commit. If not, we assigned the label 0 to the function.
+5. We read and tried to understand the commit message. If the message did not mention fixing a vulnerability or a safety problem, we assigned the label 0 to the function.
+6. We checked whether the function was actually changed to address the vulnerability/safety problem, or whether it was changed for some other purpose. If it was changed for another purpose, we assigned the label 0 to the function.
+7. We checked whether the problem was actually a security vulnerability. To simplify, we considered potential denial of service issues, such as "buffer overflow, memory leak, crash, and corruption," as vulnerabilities. If no vulnerability was found, we assigned the label 0 to the function. Otherwise, we assigned the label 1 to the function.
+8. If we could not determine the label after 10-15 minutes of effort, we assigned the label 2 to the function.
