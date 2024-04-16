@@ -1,6 +1,6 @@
 # VPP Label Accuracy Analysis
 
-We carried out a label accuracy analysis of 100 function sampled from VulnPatchPairs, that were labelled as 'vulnerable' by the Devign authors. The results are displayed in this repository.
+We carried out a label accuracy analysis of 100 functions randomly sampled from VulnPatchPairs, that were labelled as 'vulnerable' by the Devign authors. The results are displayed in this repository.
 
 ## How to view the results
 
