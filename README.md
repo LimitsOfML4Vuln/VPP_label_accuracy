@@ -30,7 +30,7 @@ Below is an annotated map of the JSON structure of label_accuracy_analysis.json.
 
 ## Labelling Process
 
-1. Sample 100 functions from VulnPatchPairs that were labelled as 'vulnerable' by the Devign authors.
+1. Randomly sample 100 functions from VulnPatchPairs that were labelled as 'vulnerable' by the Devign authors.
 2. For each of the functions, do the following:
 3. Open the corresponding patch commit on GitHub.
 4. Verify, that the function was actually modified in the patch commit. If no, assign the label 0 to the function.
@@ -39,13 +39,6 @@ Below is an annotated map of the JSON structure of label_accuracy_analysis.json.
 7. Check whether the problem is actually a security vulnerability (this was sometimes a bit tricky). If no, assign the label 0 to the function. If yes, assign the label 1 to the function.
 8. If the label could not be determined after 10-15 minutes of effort, assign the label 2 to the function.
 
-## Additional Notes
+## Labelling Criteria
 
-Since we do not have in-depth knowledge of the open source projects used in the VulnPatchPairs dataset, we made several assumptions to simplify the labelling process:
-
--   We considered all crashes to be vulnerable (Denial of Service).
--   We considered all hangs to be vulnerable (Denial of Service).
--   We considered all memory leaks to be vulnerable.
--   We considered all overflows to be vulnerable.
-
-While these assumptions may not be consistent with a strict definition of exploitable security vulnerabilities, they seem to be in line with the labelling process of the Devign authors, since they describe in their [supplementary material](https://sites.google.com/view/devign) that the vulnerabilities that they found seem to be mainly "memory-related, like buffer overflow, memory leak, crash and corruption".
+We adopted our labeling criteria based on the [supplementary materials](https://sites.google.com/view/devign) provided by the Devign authors, categorizing all potential denial of service issues, such as "buffer overflow, memory leak, crash, and corruption", as vulnerabilities.
